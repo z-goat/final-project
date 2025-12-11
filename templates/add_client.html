@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block title %}Add Client{% endblock %}
+{% block main %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h2 class="mb-4">New Client</h2>
+        <div class="card shadow-sm p-4">
+            <form action="/addclient" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Company</label>
+                    <input type="text" class="form-control" name="company" placeholder="Optional">
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Phone</label>
+                        <input type="text" class="form-control" name="phone">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Status</label>
+                    <select class="form-select" name="status">
+                        <option value="Lead">Lead</option>
+                        <option value="Active" selected>Active</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Save Client</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
