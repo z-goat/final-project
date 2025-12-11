@@ -1,0 +1,119 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ client.name }}
+{% endblock %}
+
+{% block main %}
+    <div class="row">
+
+    <!-- LEFT COLUMN: Client Information -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">Client Info</h5>
+                </div>
+            <!-- FIND THIS SECTION IN client_details.html (Left Column) -->
+                <div class="card-body text-start">
+
+                <!-- REPLACE THE TOP PART WITH THIS: -->
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h3 class="card-title">{{ client.name }}</h3>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ client.company }}</h6>
+                        </div>
+                        <a href="/edit_client/{{ client.id }}" class="btn btn-sm btn-outline-primary">Edit Client</a>
+                    </div>
+                <!-- END OF REPLACEMENT -->
+
+                    <hr>
+                <!-- Keep the rest (Status, Email, Phone, etc.) below here -->
+                    <p><strong>Status:</strong> <span class="badge bg-primary">{{ client.status }}</span></p>
+
+                <!-- Contact Links -->
+                    <p class="mb-1"><strong>Email:</strong>
+                        {% if client.email %}
+                            <a href="mailto:{{ client.email }}">{{ client.email }}</a>
+                        {% else %}
+                            <span class="text-muted">-</span>
+                        {% endif %}
+                    </p>
+                    <p><strong>Phone:</strong> {{ client.phone if client.phone else "-" }}</p>
+
+                    <div class="d-grid gap-2 mt-4">
+                        <a href="/" class="btn btn-outline-secondary">Back to Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- RIGHT COLUMN: Projects List -->
+        <div class="col-md-8">
+
+        <!-- Header Section with Button to the new page -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="mb-0">
+                    Projects
+                    <span class="badge bg-secondary rounded-pill ms-2">{{ projects|length }}</span>
+                </h4>
+            <!-- Link to the separate Add Project page -->
+                <a href="/addproject" class="btn btn-primary">
+                    + New Project
+                </a>
+            </div>
+
+            {% if not projects %}
+                <div class="alert alert-light border text-center py-5">
+                    <h4>No projects yet</h4>
+                    <p class="text-muted">This client has no active projects.</p>
+                    <a href="/addproject" class="btn btn-outline-primary mt-2">Create First Project</a>
+                </div>
+            {% else %}
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle border shadow-sm">
+                <!-- FIND THE THEAD (Table Header) -->
+                        <thead class="table-light">
+                            <tr>
+                                <th>Project Name</th>
+                                <th>Status</th>
+                                <th>Value</th>
+                                <th>Description</th>
+                                <th>Actions</th> <!-- ADD THIS LINE -->
+                            </tr>
+                        </thead>
+
+                <!-- FIND THE TBODY (Table Body) -->
+                        <tbody>
+                            {% for project in projects %}
+                                <tr>
+                                    <td class="fw-bold">{{ project.name }}</td>
+                                    <td>
+                            <!-- (Your status badge code is here) -->
+                                        <span class="badge bg-secondary">{{ project.status }}</span>
+                                    </td>
+                                    <td>{{ project.value | gbp }}</td>
+                                    <td class="text-muted small">
+                                        {{ project.description if project.description else "-" }}
+                                    </td>
+
+                        <!-- ADD THIS NEW TD AT THE END OF THE ROW -->
+                                    <td>
+                                        <div class="d-flex gap-2">
+                                            <a href="/edit_project/{{ project.id }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+
+                                            <form action="/delete_project/{{ project.id }}" method="post" onsubmit="return confirm('Delete this project?');">
+                                                <button class="btn btn-sm btn-outline-danger border-0">✕</button>
+                                            </form>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}
