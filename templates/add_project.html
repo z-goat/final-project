@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %}Add Project{% endblock %}
+
+{% block main %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h2 class="mb-4">New Project</h2>
+        <div class="card shadow-sm p-4">
+            <form action="/addproject" method="post">
+
+                <div class="mb-3">
+                    <label class="form-label">Client <span class="text-danger">*</span></label>
+                    <select class="form-select" name="client_id" required>
+                        <option value="" disabled selected>-- Select Client --</option>
+                        {% for c in clients %}
+                            <option value="{{ c.id }}">{{ c.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Project Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="project_name" required>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Value (£)</label>
+                        <input type="number" class="form-control" name="value" step="0.01" placeholder="Optional">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Deadline</label>
+                        <input type="date" class="form-control" name="deadline">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Status</label>
+                        <select class="form-select" name="status">
+                            <option value="Idea">Idea</option>
+                            <option value="In Progress" selected>In Progress</option>
+                            <option value="Paid">Paid</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Importance</label>
+                        <select class="form-select" name="importance">
+                            <option value="High">High</option>
+                            <option value="Medium" selected>Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-control" name="description" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Create Project</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
