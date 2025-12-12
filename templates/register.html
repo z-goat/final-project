@@ -15,6 +15,12 @@
         <div class="mb-3">
             <input class="form-control mx-auto w-auto" id="confirmation" name="confirmation" placeholder="Confirm Password" type="password">
         </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="grad_year" name="grad_year" placeholder="Graduation Year (optional)" type="number" min="1900" max="2099">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="affiliation" name="affiliation" placeholder="Affiliation (e.g. GSAS, SEAS) - optional" type="text">
+        </div>
         <button class="btn btn-primary" type="submit">Register</button>
     </form>
 {% endblock %}

@@ -1,0 +1,76 @@
+:root {
+  --harvard-crimson: #A41034;
+  --harvard-dark: #6e0f1a;
+  --bs-primary: #A41034;
+  --bs-primary-rgb: 164,16,52;
+}
+
+body {
+  font-family: 'Open Sans', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #ffffff;
+  color: #222222;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Merriweather', serif;
+  color: var(--harvard-dark);
+}
+
+.bg-harvard,
+.navbar.bg-harvard {
+  background-color: #A41034 !important;
+  background: #A41034 !important;
+}
+
+.navbar-brand .fw-bold {
+  color: #ffffff;
+}
+
+.nav-link {
+  color: rgba(255,255,255,0.95) !important;
+}
+
+.btn-primary {
+  background-color: var(--harvard-crimson);
+  border-color: var(--harvard-crimson);
+}
+
+.btn-outline-light {
+  color: #ffffff;
+  border-color: rgba(255,255,255,0.35);
+}
+
+footer {
+  color: #6c6c6c;
+  border-top: 4px solid rgba(164,16,52,0.08);
+  padding-top: 1rem;
+}
+
+.container .card {
+  border: 1px solid rgba(164,16,52,0.08);
+}
+
+/* Alumni-specific styles */
+.alumni-shield {
+  width: 36px;
+  height: 36px;
+  display: inline-block;
+}
+
+.card-alumni-primary {
+  background: linear-gradient(180deg, var(--harvard-crimson), var(--harvard-dark));
+  border: 0;
+}
+
+.alumni-badge {
+  background-color: rgba(164,16,52,0.08);
+  color: var(--harvard-dark);
+  border: 1px solid rgba(164,16,52,0.12);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.alumni-footer {
+  color: #666;
+  font-size: 0.9rem;
+}

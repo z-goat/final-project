@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 80" role="img" aria-label="Alumni shield">
+  <defs>
+    <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#C81E3A"/>
+      <stop offset="100%" stop-color="#A41034"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="80" rx="8" fill="url(#g)"/>
+  <path d="M12 18c8-6 40-6 40 0v26c0 16-20 18-20 18S12 60 12 44V18z" fill="#fff" opacity="0.06"/>
+  <g transform="translate(16,20)" fill="#fff">
+    <rect x="0" y="0" width="32" height="4" rx="1"/>
+    <rect x="0" y="8" width="22" height="4" rx="1"/>
+    <rect x="0" y="16" width="14" height="4" rx="1"/>
+  </g>
+</svg>
